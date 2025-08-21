@@ -5,7 +5,6 @@ import Header from '../../../components/layouts/Header'
 export default function WhatIsQscc() {
   return (
     <>
-      <Header />
       <main className="has-fixed-header">
         <section className="qscc-info">
           <img

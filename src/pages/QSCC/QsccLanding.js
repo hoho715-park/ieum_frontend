@@ -5,7 +5,6 @@ import Header from '../../components/layouts/Header'
 export default function QsccLanding() {
   return (
     <>
-      <Header />
       <main className="has-fixed-header">
         <section className="qscc-landing">
           <div className="main-image-wrap">

@@ -44,7 +44,6 @@ export default function Test() {
   if (loading) {
     return (
       <>
-        <Header />
         <main className="has-fixed-header">
           <section className="page qscc-test">
             <div className="q-card"><p className="q-text">로딩 중…</p></div>
@@ -56,7 +55,6 @@ export default function Test() {
 
   return (
     <>
-      <Header />
       <main className="has-fixed-header">
         <section className="page qscc-test">
           <div className="wrap">
