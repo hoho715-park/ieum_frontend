@@ -1,13 +1,563 @@
+/* 기본 세팅 */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR",
+               "Apple SD Gothic Neo", "맑은 고딕", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 전체 섹션(고정 크기) */
+.qscc-landing {
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+  margin: 0 auto;
+  /* 내부 배치 편의를 위한 플렉스 컬럼 */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 헤더 */
+.qscc-header {
+  width: 1354px;
+  height: 60px;
+  margin-top: 65px;
+}
+
+/* 로고·메뉴·프로필 레이아웃
+   grid-template-columns: [logo]auto [spacer]1fr [menu]auto [gap]238px [profile]auto
+   ⇒ More(메뉴 우측 끝)와 프로필 사이가 정확히 238px 유지됨 */
+.header-inner {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 121px 166px max-content 238px 50px;
+  align-items: center;
+}
+
+.logo {
+  width: 121px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+}
+/* 로고 */
+.logo img {
+  width: 121px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+.gap-166 { width: 166px; height: 1px; }
+.gap-238 { width: 238px; height: 1px; }
+
+
+/* 메뉴바 */
+.gnb ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+  gap: 100px;          /* 항목 간격 */
+  font-size: 24px;     /* 글자 크기 */
+}
+.gnb a {
+  text-decoration: none;
+  color: #000;
+  line-height: 1;
+  display: inline-block;
+
+  /*구글 폰트 설정*/
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 프로필 50x50 */
+.profile {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* 메인 이미지 영역 */
+.main-image-wrap {
+  margin-top: 40px;  /* 헤더와 이미지 사이 여백 – 필요 시 조정 */
+}
+.main-image {
+  width: 900px;
+  height: 554px;
+  object-fit: cover;
+  border-radius: 40px;
+  display: block;
+}
+
+/* 시작 버튼 박스 */
+.start-btn {
+  width: 704px;
+  height: 82px;
+  margin-top: 24px;  /* 이미지와 버튼 사이 여백 – 필요 시 조정 */
+  background: #B2B0E8;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;       /* 상하 중앙 */
+  justify-content: center;   /* 좌우 중앙 */
+  text-decoration: none;
+  font-size: 50px;           /* 버튼 텍스트 50px */
+  color: #000;
+
+  /*구글 폰트 설정*/
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 하단 서브 카피: 버튼 하단 22px, 중앙 정렬 */
+.subcopy {
+  margin: 22px 0 0 0;
+  color: #909090;
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+}
+
+
+body.qscc-info-page {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;   /* 상단 기준 */
+  overflow-y: auto;
+}
+
+/* 전체 프레임 */
+.qscc-info {
+  width: 1440px;
+  min-height: 1024px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+/* [공통 헤더] — 메인과 동일 */
+.header-inner {
+  width: 100%; height: 100%;
+  display: grid;
+  grid-template-columns: 121px 166px max-content 238px 50px;
+  align-items: center;
+}
+.logo { width: 121px; height: 60px; display: inline-flex; align-items: center; }
+.logo img { width: 121px; height: 60px; object-fit: contain; display: block; }
+.gap-166 { width: 166px; height: 1px; }
+.gap-238 { width: 238px; height: 1px; }
+.gnb ul { margin: 0; padding: 0; list-style: none; display: inline-flex; gap: 100px; font-size: 24px; }
+.gnb a { text-decoration: none; color: #000; line-height: 1; }
+.profile { width: 50px; height: 50px; padding: 0; border: 0; background: transparent; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.profile img { width: 50px; height: 50px; border-radius: 50%; display: block; }
+
+/* 제목 이미지: 566x75 중앙 고정 */
+.qscc-title {
+  width: 566px; height: 75px;
+  margin: 85px auto 0;     /* 좌우 중앙 + 상단 간격 */
+  display: block;
+}
+
+/* 질문 이미지들(정확 크기 + 정확 간격) */
+.qscc-questions { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+.q1 { width: 608px; height: 380px; margin-top: 81px; display: block; }
+.q2 { width: 620px; height: 390px; margin-top: 56px; display: block; }
+.q3 { width: 626px; height: 385px; margin-top: 45px; display: block; margin-bottom: 80px; }
+
+/* 어떤 곳에서도 잘리지 않도록 보정 (중요) */
+.qscc-questions img { object-fit: contain; }  /* 자르지 않고 축소/확대만 */
+
+
+/* ===== 테스트 본문 ===== */
+/* 헤더로부터 정확히 120px 아래에서 시작 */
+.qscc-test .wrap {
+  width: 1040px;
+  margin: 120px auto 0;   /* ← auto로 가운데 */
+}
+
+.q-card { 
+  background: #fff; border-radius: 24px; box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  padding: 24px;
+  margin: 0 auto;         /* ← 가운데 */
+}
+.q-title { font-size: 26px; font-weight: 800; margin: 0 0 8px; }
+.q-text  { font-size: 40px; font-weight: 700; margin: 0 0 24px; line-height: 1.25; text-align: left; }
+.q-title, .q-text {
+  text-align: center;     /* ← 좌측 쏠림 방지 */
+}
+
+/* ===== 옵션 카드: 정확히 190 x 453 ===== */
+/* 옵션 그리드 — 열 개수를 CSS 변수로 받고 항상 중앙정렬 */
+.opts-grid{
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 190px); /* ← 열 수 동적 */
+  gap: 24px;
+  width: 100%;
+  justify-content: center;  /* 트랙(열) 자체를 가운데 */
+  justify-items: center;    /* 각 아이템도 셀 안에서 가운데 */
+  margin: 0 auto;
+}
+
+.opt-card{
+  width:190px;height:453px;border-radius:8px;background:#d2ccee;
+  padding:0;cursor:pointer;border:2px solid transparent;
+  transition:border-color .15s,transform .15s;
+  display:flex;flex-direction:column;align-items:stretch; /* ← 내부 꽉 채움 */
+}
+.opt-card:hover{transform:translateY(-2px)}
+.opt-card.selected{border-color:#B2B0E8}
+
+/* 일러스트 영역(상단 채움) */
+.opt-img{width:100%;height:260px;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;border-top-left-radius:8px;border-top-right-radius:8px}
+.opt-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* 하단 라벨 (a./b./c. + 텍스트) */
+.opt-meta{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px}
+.opt-mark{font-size:16px;font-weight:700}
+.opt-title{font-size:18px;font-weight:800;line-height:1.1;text-align:center}
+/* 설명문구: 최대 120px 정도만 보여주고 스크롤(고정 높이 카드 유지) */
+.opt-desc{
+  margin: 8px 10px 0;
+  padding: 8px 0 0;          /* ← 기본 padding-left 40px 제거 */
+  list-style: none;
+  border-top: 2px solid rgba(0,0,0,.08);
+  font-size: 18px;
+  line-height: 1.35;
+  color: #222;
+  max-height: 120px;
+  overflow: auto;
+
+  text-align: center;        /* ← 중앙 정렬 */
+}
+.opt-desc li{
+  margin: 6px 0;
+  text-align: inherit;       /* 부모의 중앙정렬 상속 */
+}
+
+/* 중앙 정렬(이미 적용돼 있어도 안전핀) */
+.opts-grid{width:max-content;margin:0 auto;justify-content:center}
+.q-title,.q-text{text-align:center}
+
+/* ===== 네비/진행도 ===== */
+.nav { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+.btn { min-width: 160px; height: 56px; border-radius: 14px; border: 0; font-size: 18px; cursor: pointer; }
+.nav .btn-prev,
+.nav .btn-next {
+  display: none !important;
+}
+
+/* 원형 진행도 */
+.pager { display: flex; align-items: center; gap: 10px; justify-content: center; }
+.page-arrow { width: 36px; height: 36px; border-radius: 50%; border: none; font-weight: 700; background: #E7E6E6; cursor: pointer; }
+.page-arrow:disabled { opacity: .4; cursor: default; }
+
+.page-dot { width: 32px; height: 32px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; user-select: none; }
+.dot-current { background: #EDA35A; color: #fff; } /* 현재 */
+.dot-done    { background: #59a288; color: #fff; } /* 완료 */
+.dot-todo    { background: #E7E6E6; color: #666; } /* 미완료 */
+
+/* ===== 결과 ===== */
+.result-title { font-size: 40px; font-weight: 800; margin: 0 0 12px; }
+.result-desc  { font-size: 18px; color: #555; }
+
+
+/* === 테스트 화면 텍스트 전용 폰트 적용 === */
+/* test.html 안의 문제/선지/설명/진행도/결과 전체에 적용 */
+.qscc-test, .qscc-test * {
+  font-family: "Do Hyeon", sans-serif;
+  font-weight: 400;
+  font-style: normal
+}
+
+/* JS로 생성되는 팝업(미응답/완료)도 같은 폰트 */
+#ua-overlay, #ua-overlay *,
+#done-overlay, #done-overlay * {
+  font-family: "Do Hyeon", sans-serif;
+  font-weight: 400;
+  font-style: normal
+}
+
+.qscc-test .opt-title,
+.qscc-test .opt-desc,
+.qscc-test .opt-mark,
+.qscc-test .opt-desc li  {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 카드가 내용 길이에 맞춰 늘어나도록 */
+.opt-card{
+  height: auto;        /* 고정 높이 해제 */
+  min-height: 453px;   /* 기존 디자인 최소 높이는 유지 */
+}
+
+/* 설명은 모두 표시 (스크롤 제거) */
+.opt-desc{
+  max-height: none;
+  overflow: visible;
+}
+
+/* 길게 붙은 단어도 줄바꿈 되도록(한글/영문 모두) */
+.opt-title,
+.opt-desc,
+.opt-desc li{
+  word-break: keep-all;      /* 한글 어절 유지 */
+  overflow-wrap: anywhere;   /* 너무 긴 영문/숫자도 줄바꿈 */
+}
+
+/* 선지(옵션) 텍스트 전용 폰트 */
+.qscc-test .opt-title,      /* 선지 라벨 텍스트 */
+.qscc-test .opt-desc,       /* 설명 블록 */
+.qscc-test .opt-desc li,    /* 설명 항목 */
+.qscc-test .opt-mark {      /* a. b. c. */
+  font-family: "Poor Story", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* ===== 결과 빙고판 ===== */
+.qscc-bingo { 
+  max-width: 680px; 
+  margin: 20px auto 28px; 
+}
+
+.bingo-head {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-bottom: 10px;
+}
+
+.bingo-title {
+  font-weight: 800; font-size: 20px;
+  font-family: "Poor Story", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.bingo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.bingo-cell {
+  background: #F6E089;              /* 밝은 노랑 */
+  border: 2px solid #E6D06A;
+  border-radius: 10px;
+  padding: 10px 8px;
+  min-height: 78px;                 /* 줄 수 많을 때 자동 확장 */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.25;
+  word-break: keep-all;             /* 한글 어절 유지 */
+  overflow-wrap: anywhere; 
+  font-family: "Poor Story", system-ui;
+  font-weight: 700;
+  font-style: normal;         /* 긴 영문 줄바꿈 */
+}
+
+/* 가운데 FREE(체질명) 칸 강조 */
+.bingo-cell.bingo-free {
+  background: #B2B0E8;
+  border-color: #9D9AD8;
+  color: #000000;
+  font-weight: 900;
+  font-family: "Poor Story", system-ui;
+  font-style: normal;
+  font-size: 30px;
+}
+
+/* 화면 100%일때 레이아웃 수정 */
+.qscc-header{
+  width: 1354px;
+  height: 60px;
+  margin: 32px auto 0;      /* 위쪽 여백 통일(원하면 24~40px로 조절) */
+}
+.qscc-header .header-inner{
+  display: grid;
+  grid-template-columns: 121px 166px max-content 238px 50px;
+  align-items: center;
+}
+
+/* ==================================================
+   2) 섹션 스케일(헤더는 스케일 적용 안 함 — 고정 유지)
+      - 숫자만 바꿔서 더 작게/크게 조절 가능
+      - qscc-landing  : 메인(시작/설명 버튼 보이게 더 줄임)
+      - qscc-test .wrap: 테스트 페이지 본문
+      - qscc-info     : "QSCCII 설문이란?" 페이지 본문
+   ================================================== */
+:root{
+  --landing-scale: .74;   /* 메인 페이지 74%  → 버튼 더 확실히 보이게 */
+  --test-scale:    .86;   /* 테스트 페이지 86%  */
+  --info-scale:    .86;   /* whatisqscc 페이지 86% */
+}
+
+/* 메인(랜딩) 섹션만 축소 */
+.qscc-landing{
+  transform: scale(var(--landing-scale));
+  transform-origin: top center;
+}
+/* transform은 레이아웃 높이 자체는 안 줄이므로 여백 보정 */
+.qscc-landing::after{
+  content: "";
+  display: block;
+  height: calc(1000px * (1 - var(--landing-scale))); /* 필요 시 숫자 살짝 조절 */
+}
+
+/* 테스트 본문 축소 */
+.qscc-test .wrap{
+  transform: scale(var(--test-scale));
+  transform-origin: top center;
+}
+.qscc-test .wrap::after{
+  content: "";
+  display: block;
+  height: calc(900px * (1 - var(--test-scale)));
+}
+
+/* whatisqscc 본문 축소 */
+.qscc-info{
+  transform: scale(var(--info-scale));
+  transform-origin: top center;
+}
+.qscc-info::after{
+  content: "";
+  display: block;
+  height: calc(1000px * (1 - var(--info-scale)));
+}
+
+/* (선택) 메인 비주얼·버튼 사이 여백 살짝 줄여서 버튼 더 노출 */
+.main-image-wrap{ margin-top: 16px; }
+
+/* 공통 변수(이미 있더라도 재선언 OK) */
+:root{
+  --header-w: 1354px;
+  --header-h: 60px;
+  --header-top: 32px;
+  --landing-scale: .74;  /* 메인에서 쓰는 값과 반드시 동일 */
+}
+
+/* 기본 헤더 치수(덮어쓰기) */
+.qscc-header{
+  width: var(--header-w);
+  height: var(--header-h);
+  margin: var(--header-top) auto 0 !important;  /* 상단 32px 기준값 */
+}
+
+/* ▼ test 페이지에서만: 메인과 똑같이 보이도록 헤더 자체를 축소 */
+.qscc-test > .qscc-header{
+  /* 메인 헤더와 동일한 시각 크기를 만들기 위해 같은 스케일 적용 */
+  transform: scale(var(--landing-scale));
+  transform-origin: top center;
+
+  /* margin은 레이아웃 값이므로 눈에 보이는 간격도 .74배로 줄여줘야 동일해 보임 */
+  margin-top: calc(var(--header-top) * var(--landing-scale)) !important;
+
+  /* 가운데 정렬 보정(시각 박스가 줄어도 가운데 유지) */
+  width: var(--header-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.qscc-info > .qscc-header{
+  transform: scale(var(--landing-scale));
+  transform-origin: top center;
+  margin-top: calc(var(--header-top) * var(--landing-scale)) !important;
+  width: var(--header-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 헤더 내부 그리드는 공통 유지 */
+.qscc-header .header-inner{
+  display: grid;
+  grid-template-columns: 121px 166px max-content 238px 50px;
+  align-items: center;
+}
+
+/* 1) 기존 고정 스케일/가짜 높이 보정 제거 */
+.qscc-test .wrap::after{ content:none !important; height:0 !important; }
+
+/* 2) 헤더 아래 간격과 전체 스케일을 뷰포트 기준으로 계산 */
+:root{
+  --header-h: 60px;           /* 헤더 높이(공통) */
+}
+.qscc-test .wrap{
+  /* 헤더와의 간격: 필요시 24~56px로만 조절 */
+  --fit-top-gap: 36px;
+
+  /* 질문+선지+진행도 총 원본 높이(디자인 기준). 작게/크게 보이면 940~1080에서 미세조정 */
+  --fit-target-h: 980px;
+
+  /* 화면 높이에 맞춰 자동 스케일(너무 작아지면 .60까지) */
+  --fit-scale: clamp(.60,
+    calc((100vh - var(--header-h) - var(--fit-top-gap)) / var(--fit-target-h)),
+    .90
+  );
+
+  margin-top: var(--fit-top-gap) !important;   /* 헤더와 간격 확 줄임 */
+  transform: scale(var(--fit-scale)) !important;
+  transform-origin: top center;
+  width: 1040px;
+  margin-left: auto; margin-right: auto;
+  overflow: visible;
+}
+
+/* 3) 내부 여백 압축(질문/선지/진행도 블록 간격 최소화) */
+.qscc-test .q-card{ padding: 18px; }
+.qscc-test .q-title{ margin: 0 0 4px; font-size: 26px; line-height: 1.2; text-align: center; }
+.qscc-test .q-text { margin: 0 0 18px; font-size: 40px; line-height: 1.2; text-align: center; }
+
+.qscc-test .opts-grid{ gap: 16px; }     /* 카드 사이 간격 압축 */
+.qscc-test .opt-img { height: 240px; }  /* 260 → 240로 살짝 줄임 */
+
+.qscc-test .nav{ margin-top: 12px; }    /* 진행도 바로 붙이기 */
+.qscc-test .pager{ gap: 8px; }
+.qscc-test .page-dot{ width: 28px; height: 28px; font-size: 13px; }
+.qscc-test .page-arrow{ width: 32px; height: 32px; }
+
+/* 기본: 헤더 바로 아래에 거의 붙여 시작 */
+.qscc-test .wrap{
+  /* 기존 120px을 덮어씀 */
+  margin-top: 12px !important;   /* 원하면 8~20px 사이로 조절 */
+}
+
+@media (max-height: 900px){
+  .qscc-test .wrap{ margin-top: 6px !important; }
+}
+@media (max-height: 800px){
+  .qscc-test .wrap{ margin-top: 2px !important; }
 }
