@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className="qscc-header">
       <div className="header-inner">
-        <Link to="/" className="logo" aria-label="ieum 로고">
+        <Link to="/main" className="logo" aria-label="ieum 로고">
           <img src="/images/logo.png" alt="logo" />
         </Link>
 
