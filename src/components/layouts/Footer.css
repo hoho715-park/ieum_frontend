@@ -1,0 +1,98 @@
+/* 컨테이너: 1440 x 171, 중앙 정렬, 배경 #B4BDE7 */
+.footer {
+  width: 100%;
+}
+
+.footer__inner {
+  width: 100%;
+  max-width: 1440px;
+  height: 171px;
+  margin: 0 auto;
+  background: #B2B0E8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  padding: 0 32px; /* 좌우 여백 조정 가능 */
+}
+
+/* 좌측: 로고 + 브랜드명 */
+.footer__left {
+  display: flex;
+  align-items: center;
+}
+
+.footer__logo {
+  width: 69px;
+  height: 91px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer__brand {
+  margin-left: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+}
+
+/* 우측: 상단 아이콘 / 하단 링크·카피(세로 배치) */
+.footer__right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end; /* 아래쪽으로 붙임 */
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+/* 아이콘 줄 */
+.footer__icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.footer__icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* 하단 링크 + 저작권 */
+.footer__bottom {
+  text-align: right;
+}
+
+.footer__links {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;           /* ‘고객센터’와 ‘개인정보처리방침’ 간격 */
+  font-size: 20px;
+}
+
+.footer__links a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  text-decoration: underline;
+}
+
+.footer__copy {
+  margin-top: 8px;
+  font-size: 20px;
+  color: #000;
+}
+
+/* 선택: 768px 이하 간단 축소(필요 없으면 제거해도 됨) */
+@media (max-width: 768px) {
+  .footer__inner { padding: 0 16px; }
+  .footer__brand,
+  .footer__links,
+  .footer__copy { font-size: 16px; }
+  .footer__icon { width: 24px; height: 24px; }
+  .footer__logo { width: 54px; height: 71px; }
+}
