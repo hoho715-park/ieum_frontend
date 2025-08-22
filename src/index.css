@@ -589,3 +589,13 @@ body.qscc-info-page {
 .dropdown a { display:block; padding:8px 0; color:#111; text-decoration:none; white-space:nowrap; font-size:16px; }
 .dropdown a:hover { text-decoration:underline; }
 .nav-item:last-child .dropdown { right:0; left:auto; }
+
+.qscc-header .gnb a,
+.qscc-header .gnb a:link,
+.qscc-header .gnb a:visited,
+.qscc-header .gnb a:active,
+.qscc-header .gnb .nav-link:focus,
+.qscc-header .gnb .nav-link:focus-visible {
+  text-decoration: none !important;
+  outline: none; /* 포커스 외곽선도 제거하려면 유지, 아니면 지워도 됨 */
+}
