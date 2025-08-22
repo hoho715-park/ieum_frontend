@@ -1,0 +1,13 @@
+.start {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.start__logo {
+  width: 169px; height: 222px; display: block;
+  animation: pop .45s ease-out, fade 1.8s ease-in;
+}
+@keyframes pop { from{transform:scale(.92)} to{transform:scale(1)} }
+@keyframes fade { from{opacity:0} to{opacity:1} }
