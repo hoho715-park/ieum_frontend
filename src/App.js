@@ -8,6 +8,7 @@ import HomePage from "./pages/home/HomePage";
 import AboutUsPage from "./pages/about-us/AboutUs";
 import Layout from "./components/layouts/Layout";
 import Start from "./pages/start/Start"; // 2~3초 후 /main으로 이동
+import IeumIntro from "./pages/about-us/IeumIntro";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       {/* 메인/서브: 각 라우트에서 Layout로 감싸기 */}
       <Route path="/main" element={<Layout><HomePage /></Layout>} />
       <Route path="/about" element={<Layout><AboutUsPage /></Layout>} />
+      <Route path="/about/ieum" element={<Layout><IeumIntro /></Layout>} />
 
       {/* QSCC */}
       <Route path="/qscc" element={<Layout><QsccLanding /></Layout>} />

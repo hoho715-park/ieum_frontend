@@ -5,7 +5,7 @@ const navItems = [
     label: "About Us",
     to: "/about",
     children: [
-      { label: "이음 소개", to: "/about#ieum" },
+      { label: "이음 소개", to: "/about/ieum" },
       { label: "서비스 소개", to: "/about#service" },
     ],
   },
