@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import { Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import QsccLanding from "./pages/QSCC/QsccLanding";
+import WhatIsQscc from "./pages/QSCC/about/WhatIsQscc";
+import Test from "./pages/QSCC/test/Test";
+import HomePage from "./pages/home/HomePage";
+import AboutUsPage from "./pages/about-us/AboutUs";
+import Layout from "./components/layouts/Layout";
+import Start from "./pages/start/Start"; // 2~3초 후 /main으로 이동
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Routes>
+      {/* 스플래시: 레이아웃 없이 */}
+      <Route path="/" element={<Start />} />
 
-export default App
+      {/* 메인/서브: 각 라우트에서 Layout로 감싸기 */}
+      <Route path="/main" element={<Layout><HomePage /></Layout>} />
+      <Route path="/about" element={<Layout><AboutUsPage /></Layout>} />
+
+      {/* QSCC */}
+      <Route path="/qscc" element={<Layout><QsccLanding /></Layout>} />
+      <Route path="/qscc/whatisqscc" element={<Layout><WhatIsQscc /></Layout>} />
+      <Route path="/qscc/test" element={<Layout><Test /></Layout>} />
+
+      {/* 구 주소 리다이렉트 */}
+      <Route path="/test" element={<Navigate to="/qscc" replace />} />
+
+      {/* 나머지는 메인으로 */}
+      <Route path="*" element={<Navigate to="/main" replace />} />
+    </Routes>
+  );
+}
